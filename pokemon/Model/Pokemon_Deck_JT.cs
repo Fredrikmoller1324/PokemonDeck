@@ -4,7 +4,7 @@ using System.Text;
 
 namespace pokemon
 {
-    class Pokemon_Deck_JT
+    public class Pokemon_Deck_JT
     {
         public int DeckID { get; set; }
 

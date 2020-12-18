@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pokemon.UserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,17 +20,17 @@ namespace pokemon
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            using (var db = new PokemonContext())
-            {
-                if(db.Database.CanConnect())
-                {
-                    MessageBox.Show("Connected");
-                }
-                else
-                {
-                    MessageBox.Show("failed to connected");
-                }
-            }
+            
+        }
+
+        private void button1_Pokemons_Click(object sender, EventArgs e)
+        {
+            PokemonsUserControl pokemonsUserControl = new PokemonsUserControl();
+
+            Controls.Add(pokemonsUserControl);
+            pokemonsUserControl.Visible = true;
+            pokemonsUserControl.Dock = DockStyle.Fill;
+            pokemonsUserControl.BringToFront();
         }
     }
 }

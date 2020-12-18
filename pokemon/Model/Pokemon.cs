@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Text;
 
 namespace pokemon
 {
     [DebuggerDisplay("{Name}")]
-    class Pokemon
+    public class Pokemon
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-
+        
         public virtual ICollection<Pokemon_Deck_JT> Pokemon_Deck_JTs { get; set; }
 
         public virtual ICollection<Pokemon_Ability_JT> Pokemon_Ability_JTs { get; set; }

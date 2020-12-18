@@ -4,7 +4,7 @@ using System.Text;
 
 namespace pokemon
 {
-    class Pokemon_Ability_JT
+    public class Pokemon_Ability_JT
     {
         public int PokemonID { get; set; }
 

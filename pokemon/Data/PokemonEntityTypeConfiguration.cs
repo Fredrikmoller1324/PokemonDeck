@@ -6,20 +6,15 @@ using System.Text;
 
 namespace pokemon
 {
-    class PokemonEntityTypeConfiguration : IEntityTypeConfiguration<Pokemon>
+    public class PokemonEntityTypeConfiguration : IEntityTypeConfiguration<Pokemon>
     {
         public void Configure(EntityTypeBuilder<Pokemon> builder)
         {
             builder.HasKey(p => p.ID);
 
-            /*builder.HasOne<Trainer>()
-                .WithMany()
-                .HasForeignKey(p => p.TrainerID);
+            builder.HasData(new Pokemon {ID = 1, Name = "Pikachu", HP = 50, Level = 22, TrainerID = 1, TypeID = 1});
 
-            builder.HasOne<Type>()
-                .WithMany()
-                .HasForeignKey(p => p.TypeID);
-            */
+            builder.HasData(new Pokemon {ID = 2, Name = "Blastoise", HP = 50, Level = 59, TrainerID = 2, TypeID = 14});
             
         }
     }

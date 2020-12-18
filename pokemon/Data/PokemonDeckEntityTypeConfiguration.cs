@@ -5,19 +5,15 @@ using System.Text;
 
 namespace pokemon
 {
-    class PokemonDeckEntityTypeConfiguration
+    public class PokemonDeckEntityTypeConfiguration
     {
         public void Configure(EntityTypeBuilder<Pokemon_Deck_JT> builder)
         {
             builder.HasKey(pd => new { pd.DeckID, pd.PokemonID });
 
-            builder.HasOne<Deck>()
-                .WithMany()
-                .HasForeignKey(pd => pd.DeckID);
+            builder.HasData(new Pokemon_Deck_JT { PokemonID = 1, DeckID = 1 });
 
-            builder.HasOne<Pokemon>()
-               .WithMany()
-               .HasForeignKey(pd => pd.PokemonID);
+            builder.HasData(new Pokemon_Deck_JT { PokemonID = 2, DeckID = 1 });
 
         }
     }

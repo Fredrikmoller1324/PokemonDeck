@@ -53,3 +53,7 @@ C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon
 C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.dll
 C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.pdb
 C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.genruntimeconfig.cache
+C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.UserControls.PokemonsUserControl.resources
+C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.UserControls.DisplayDetailedInfo.resources
+C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.UserControls.CreateNewPokemon.resources
+C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.UserControls.ModifyPokemon.resources

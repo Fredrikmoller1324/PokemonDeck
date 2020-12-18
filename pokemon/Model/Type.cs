@@ -6,7 +6,7 @@ using System.Text;
 namespace pokemon
 {
     [DebuggerDisplay("{Name}")]
-    class Type
+    public class Type
     {
         public int ID { get; set; }
 
