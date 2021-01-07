@@ -32,7 +32,6 @@ namespace pokemon.UserControls
             this.textBox_ChangeHp = new System.Windows.Forms.TextBox();
             this.comboBox_ChangeType = new System.Windows.Forms.ComboBox();
             this.label_Type = new System.Windows.Forms.Label();
-            this.button_Cancel = new System.Windows.Forms.Button();
             this.button_Save = new System.Windows.Forms.Button();
             this.listBox_Decks = new System.Windows.Forms.ListBox();
             this.listBox_Abilties = new System.Windows.Forms.ListBox();
@@ -80,16 +79,6 @@ namespace pokemon.UserControls
             this.label_Type.TabIndex = 40;
             this.label_Type.Text = "Type";
             // 
-            // button_Cancel
-            // 
-            this.button_Cancel.Location = new System.Drawing.Point(594, 401);
-            this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(85, 34);
-            this.button_Cancel.TabIndex = 39;
-            this.button_Cancel.Text = "Cancel";
-            this.button_Cancel.UseVisualStyleBackColor = true;
-            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
-            // 
             // button_Save
             // 
             this.button_Save.Location = new System.Drawing.Point(702, 401);
@@ -98,6 +87,7 @@ namespace pokemon.UserControls
             this.button_Save.TabIndex = 38;
             this.button_Save.Text = "Save";
             this.button_Save.UseVisualStyleBackColor = true;
+            this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
             // 
             // listBox_Decks
             // 
@@ -125,6 +115,7 @@ namespace pokemon.UserControls
             this.button_AddToDeck.TabIndex = 35;
             this.button_AddToDeck.Text = "Add";
             this.button_AddToDeck.UseVisualStyleBackColor = true;
+            this.button_AddToDeck.Click += new System.EventHandler(this.button_AddToDeck_Click);
             // 
             // button_AddAbility
             // 
@@ -134,6 +125,7 @@ namespace pokemon.UserControls
             this.button_AddAbility.TabIndex = 34;
             this.button_AddAbility.Text = "Add";
             this.button_AddAbility.UseVisualStyleBackColor = true;
+            this.button_AddAbility.Click += new System.EventHandler(this.button_AddAbility_Click);
             // 
             // comboBox_ChangeDeck
             // 
@@ -261,6 +253,7 @@ namespace pokemon.UserControls
             this.button1_deleteAbility.TabIndex = 43;
             this.button1_deleteAbility.Text = "Delete";
             this.button1_deleteAbility.UseVisualStyleBackColor = true;
+            this.button1_deleteAbility.Click += new System.EventHandler(this.button1_deleteAbility_Click);
             // 
             // button1_deleteDeck
             // 
@@ -270,6 +263,7 @@ namespace pokemon.UserControls
             this.button1_deleteDeck.TabIndex = 44;
             this.button1_deleteDeck.Text = "Delete";
             this.button1_deleteDeck.UseVisualStyleBackColor = true;
+            this.button1_deleteDeck.Click += new System.EventHandler(this.button1_deleteDeck_Click);
             // 
             // ModifyPokemon
             // 
@@ -281,7 +275,6 @@ namespace pokemon.UserControls
             this.Controls.Add(this.textBox_ChangeHp);
             this.Controls.Add(this.comboBox_ChangeType);
             this.Controls.Add(this.label_Type);
-            this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_Save);
             this.Controls.Add(this.listBox_Decks);
             this.Controls.Add(this.listBox_Abilties);
@@ -313,7 +306,6 @@ namespace pokemon.UserControls
         private System.Windows.Forms.TextBox textBox_ChangeHp;
         private System.Windows.Forms.ComboBox comboBox_ChangeType;
         private System.Windows.Forms.Label label_Type;
-        private System.Windows.Forms.Button button_Cancel;
         private System.Windows.Forms.Button button_Save;
         private System.Windows.Forms.ListBox listBox_Decks;
         private System.Windows.Forms.ListBox listBox_Abilties;

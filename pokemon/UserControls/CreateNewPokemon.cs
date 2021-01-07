@@ -105,6 +105,7 @@ namespace pokemon.UserControls
 
                 pokemonsUserControl.db.Pokemons.Add(newPokemon);
                 pokemonsUserControl.db.SaveChanges();
+                pokedata.Rows[rowIndex].Cells["ID"].Value = newPokemon.ID;
 
                 //Controller added to not insert duplicates
                 int controller = 0;
@@ -155,9 +156,12 @@ namespace pokemon.UserControls
                         DeckID = deck,
                     };
                     pokemonsUserControl.db.Pokemon_Deck_JTs.Add(newJTpokeDeck);
+                    
                 }
 
                 pokemonsUserControl.db.SaveChanges();
+                pokemonsUserControl.LoadAllPokemons();
+                this.Hide();
             }
 
             if (listBox_Abilties.Items.Count == 0 || listBox_Decks.Items.Count == 0)
@@ -202,12 +206,36 @@ namespace pokemon.UserControls
 
         private void button_AddAbility_Click(object sender, EventArgs e)
         {
-            listBox_Abilties.Items.Add(comboBox_Abilities.SelectedItem.ToString());
+            if (!listBox_Abilties.Items.Contains($"{comboBox_Abilities.SelectedItem}"))
+            {
+                listBox_Abilties.Items.Add(comboBox_Abilities.SelectedItem.ToString());
+            }
+            else { MessageBox.Show("Pokemon already know this ability!","Add ability failed"); }
         }
 
         private void button_AddToDeck_Click(object sender, EventArgs e)
         {
-            listBox_Decks.Items.Add(comboBox_Deck.SelectedItem.ToString());
+            if (!listBox_Decks.Items.Contains($"{comboBox_Deck.SelectedItem}"))
+            {
+                listBox_Decks.Items.Add(comboBox_Deck.SelectedItem.ToString());
+            }
+            else { MessageBox.Show("This pokemon is already assigned to this deck!", "Add Deck failed");}
+        }
+
+        private void button_RemoveAbility_Click(object sender, EventArgs e)
+        {
+            if(listBox_Abilties.SelectedItem != null)
+            {
+                listBox_Abilties.Items.Remove(listBox_Abilties.SelectedItem);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(listBox_Decks.SelectedItem != null)
+            {
+                listBox_Decks.Items.Remove(listBox_Decks.SelectedItem);
+            }
         }
     }
 }

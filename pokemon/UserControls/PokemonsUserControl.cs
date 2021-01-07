@@ -45,7 +45,7 @@ namespace pokemon.UserControls
             }
         }
 
-        private void LoadAllPokemons()
+        public void LoadAllPokemons()
         {
 
             if (db.Database.CanConnect())
@@ -120,17 +120,15 @@ namespace pokemon.UserControls
         private void button1_DetailedStats_Click(object sender, EventArgs e)
         {
             detailedInfo = new DisplayDetailedInfo(Selectedcellcollection, trainers, ability_JTs, abilities, decks);
-
             Controls.Add(detailedInfo);
             detailedInfo.Visible = true;
             detailedInfo.BringToFront();
 
             detailedInfo.Left = (this.Width - detailedInfo.Width) / 2;
             detailedInfo.Top = (this.Height - detailedInfo.Height) / 2;
-
         }
 
-        private void button1_deletePokemon_Click(object sender, EventArgs e) //Updatera så tar bort i databas
+        private void button1_deletePokemon_Click(object sender, EventArgs e)
         {
             var removeThisPokemon = Selectedcellcollection[0].Value.ToString();
 
@@ -142,12 +140,8 @@ namespace pokemon.UserControls
                 }
             }
 
-
             dataGridView1_PokemonsDisplay.Rows.RemoveAt(dataGridView1_PokemonsDisplay.SelectedRows[0].Index);
-
-
             db.SaveChanges();
-            //db.Dispose();
         }
 
         private void dataGridView1_PokemonsDisplay_SelectionChanged(object sender, EventArgs e)
@@ -189,7 +183,7 @@ namespace pokemon.UserControls
 
         private void button1_ModifyPokemon_Click(object sender, EventArgs e)
         {
-            modifyPokemon = new ModifyPokemon(Selectedcellcollection);
+            modifyPokemon = new ModifyPokemon(Selectedcellcollection, decks, abilities, ability_JTs, pokemon_Deck_JTs);
             Controls.Add(modifyPokemon);
             modifyPokemon.Visible = true;
             modifyPokemon.BringToFront();
@@ -197,5 +191,7 @@ namespace pokemon.UserControls
             modifyPokemon.Left = (this.Width - modifyPokemon.Width) / 2;
             modifyPokemon.Top = (this.Height - modifyPokemon.Height) / 2;
         }
+
+       
     }
 }

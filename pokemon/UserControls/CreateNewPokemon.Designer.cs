@@ -50,6 +50,8 @@ namespace pokemon.UserControls
             this.comboBox_type = new System.Windows.Forms.ComboBox();
             this.label_Type = new System.Windows.Forms.Label();
             this.textBox_Hp = new System.Windows.Forms.TextBox();
+            this.button_RemoveAbility = new System.Windows.Forms.Button();
+            this.button1_deleteDeck = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Level)).BeginInit();
             this.SuspendLayout();
             // 
@@ -254,11 +256,33 @@ namespace pokemon.UserControls
             this.textBox_Hp.Size = new System.Drawing.Size(121, 23);
             this.textBox_Hp.TabIndex = 21;
             // 
+            // button_RemoveAbility
+            // 
+            this.button_RemoveAbility.Location = new System.Drawing.Point(732, 171);
+            this.button_RemoveAbility.Name = "button_RemoveAbility";
+            this.button_RemoveAbility.Size = new System.Drawing.Size(48, 23);
+            this.button_RemoveAbility.TabIndex = 22;
+            this.button_RemoveAbility.Text = "delete";
+            this.button_RemoveAbility.UseVisualStyleBackColor = true;
+            this.button_RemoveAbility.Click += new System.EventHandler(this.button_RemoveAbility_Click);
+            // 
+            // button1_deleteDeck
+            // 
+            this.button1_deleteDeck.Location = new System.Drawing.Point(732, 351);
+            this.button1_deleteDeck.Name = "button1_deleteDeck";
+            this.button1_deleteDeck.Size = new System.Drawing.Size(48, 23);
+            this.button1_deleteDeck.TabIndex = 23;
+            this.button1_deleteDeck.Text = "delete";
+            this.button1_deleteDeck.UseVisualStyleBackColor = true;
+            this.button1_deleteDeck.Click += new System.EventHandler(this.button1_Click);
+            // 
             // CreateNewPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.button1_deleteDeck);
+            this.Controls.Add(this.button_RemoveAbility);
             this.Controls.Add(this.textBox_Hp);
             this.Controls.Add(this.comboBox_type);
             this.Controls.Add(this.label_Type);
@@ -312,5 +336,7 @@ namespace pokemon.UserControls
         private System.Windows.Forms.ComboBox comboBox_type;
         private System.Windows.Forms.Label label_Type;
         private System.Windows.Forms.TextBox textBox_Hp;
+        private System.Windows.Forms.Button button_RemoveAbility;
+        private System.Windows.Forms.Button button1_deleteDeck;
     }
 }

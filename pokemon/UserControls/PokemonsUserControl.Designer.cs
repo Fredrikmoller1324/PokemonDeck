@@ -29,8 +29,8 @@ namespace pokemon.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1_PokemonsDisplay = new System.Windows.Forms.DataGridView();
             this.pokemons = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,8 +79,8 @@ namespace pokemon.UserControls
             // 
             // pokemons
             // 
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.pokemons.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.pokemons.DefaultCellStyle = dataGridViewCellStyle7;
             this.pokemons.HeaderText = "Pokemon";
             this.pokemons.Name = "pokemons";
             // 
@@ -92,8 +92,8 @@ namespace pokemon.UserControls
             // Abilities
             // 
             this.Abilities.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Abilities.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Abilities.DefaultCellStyle = dataGridViewCellStyle8;
             this.Abilities.HeaderText = "Abilities";
             this.Abilities.Name = "Abilities";
             this.Abilities.Resizable = System.Windows.Forms.DataGridViewTriState.True;
