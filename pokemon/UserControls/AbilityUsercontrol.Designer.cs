@@ -38,6 +38,7 @@ namespace pokemon.UserControls
             this.textBox_MinDmg = new System.Windows.Forms.TextBox();
             this.textBox_MaxDmg = new System.Windows.Forms.TextBox();
             this.textBox_AbilityName = new System.Windows.Forms.TextBox();
+            this.button_ModifyAbility = new System.Windows.Forms.Button();
             this.button_DeleteAbility = new System.Windows.Forms.Button();
             this.dataGridView_AbilityDisplayer = new System.Windows.Forms.DataGridView();
             this.Ability = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +73,7 @@ namespace pokemon.UserControls
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.splitContainer1.Panel2.Controls.Add(this.button_ModifyAbility);
             this.splitContainer1.Panel2.Controls.Add(this.button_DeleteAbility);
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView_AbilityDisplayer);
             this.splitContainer1.Size = new System.Drawing.Size(814, 487);
@@ -166,6 +168,17 @@ namespace pokemon.UserControls
             this.textBox_AbilityName.Size = new System.Drawing.Size(100, 23);
             this.textBox_AbilityName.TabIndex = 0;
             // 
+            // button_ModifyAbility
+            // 
+            this.button_ModifyAbility.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_ModifyAbility.Location = new System.Drawing.Point(274, 405);
+            this.button_ModifyAbility.Name = "button_ModifyAbility";
+            this.button_ModifyAbility.Size = new System.Drawing.Size(90, 36);
+            this.button_ModifyAbility.TabIndex = 2;
+            this.button_ModifyAbility.Text = "Modify Ability";
+            this.button_ModifyAbility.UseVisualStyleBackColor = true;
+            this.button_ModifyAbility.Click += new System.EventHandler(this.button_ModifyAbility_Click);
+            // 
             // button_DeleteAbility
             // 
             this.button_DeleteAbility.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -200,6 +213,7 @@ namespace pokemon.UserControls
             this.dataGridView_AbilityDisplayer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_AbilityDisplayer.Size = new System.Drawing.Size(539, 384);
             this.dataGridView_AbilityDisplayer.TabIndex = 0;
+            this.dataGridView_AbilityDisplayer.SelectionChanged += new System.EventHandler(this.dataGridView_AbilityDisplayer_SelectionChanged);
             // 
             // Ability
             // 
@@ -261,5 +275,6 @@ namespace pokemon.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn MinimalDamage;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaximalDamage;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.Button button_ModifyAbility;
     }
 }

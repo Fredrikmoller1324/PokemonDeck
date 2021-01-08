@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace pokemon.UserControls
 {
     public partial class AbilityUsercontrol : UserControl
     {
-        PokemonContext db = new PokemonContext();
+        DataGridViewSelectedCellCollection selectedCellCollection;
+        public PokemonContext db = new PokemonContext();
         List<Ability> abilities;
         List<Pokemon_Ability_JT> pokemon_Ability_JTs;
+
         public AbilityUsercontrol()
         {
             InitializeComponent();
@@ -49,9 +47,11 @@ namespace pokemon.UserControls
 
         private void button_CreateAbility_Click(object sender, EventArgs e)
         {
-            if(textBox_AbilityName.Text.Length > 0 &&
+            if (textBox_AbilityName.Text.Length > 0 &&
+                System.Text.RegularExpressions.Regex.IsMatch(textBox_AbilityName.Text, "^[A-Za-z]*$") &&
                 System.Text.RegularExpressions.Regex.IsMatch(textBox_MinDmg.Text, "^[0-9]*$") &&
-                System.Text.RegularExpressions.Regex.IsMatch(textBox_MaxDmg.Text, "^[0-9]*$"))
+                System.Text.RegularExpressions.Regex.IsMatch(textBox_MaxDmg.Text, "^[0-9]*$") &&
+                int.Parse(textBox_MinDmg.Text) < int.Parse(textBox_MaxDmg.Text))
             {
                 Ability newAbility = new Ability()
                 {
@@ -71,11 +71,26 @@ namespace pokemon.UserControls
 
                 dataGridView_AbilityDisplayer.Rows[rowIndex].Cells["ID"].Value = newAbility.ID;
                 dataGridView_AbilityDisplayer.Columns["ID"].Visible = false;
+                textBox_AbilityName.Clear();
+                textBox_MinDmg.Clear();
+                textBox_MaxDmg.Clear();
 
             }
-            else
+            else if (textBox_AbilityName.Text.Length == 0 ||
+                !System.Text.RegularExpressions.Regex.IsMatch(textBox_MinDmg.Text, "^[0-9]*$") ||
+                !System.Text.RegularExpressions.Regex.IsMatch(textBox_MaxDmg.Text, "^[0-9]*$") ||
+                !System.Text.RegularExpressions.Regex.IsMatch(textBox_AbilityName.Text, "^[A-Za-z]*$"))
             {
                 MessageBox.Show($"All Fields needs to be filled in! \nMinimal and Maximal Damage has to be numeric values", "Invaild Input");
+            }
+
+            int min = 0;
+            int max = 0;
+            bool SuccesMin = int.TryParse(textBox_MinDmg.Text, out min);
+            bool SuccesMax = int.TryParse(textBox_MaxDmg.Text, out max);
+            if (SuccesMax && SuccesMin && min > max)
+            {
+                MessageBox.Show($"Minimal Damage needs to be lower than Maximal Damage", "Invalid Input");
             }
         }
 
@@ -100,7 +115,7 @@ namespace pokemon.UserControls
 
             foreach (var ability in abilities)
             {
-                if(ability.ID == abilityID)
+                if (ability.ID == abilityID)
                 {
                     db.Abilities.Remove(ability);
                 }
@@ -108,6 +123,23 @@ namespace pokemon.UserControls
             dataGridView_AbilityDisplayer.Rows.RemoveAt(dataGridView_AbilityDisplayer.SelectedRows[0].Index);
             db.SaveChanges();
 
+        }
+
+        private void button_ModifyAbility_Click(object sender, EventArgs e)
+        {
+            ModifyAbilityUsercontrol ModifyAbilityUsercontrol = new ModifyAbilityUsercontrol(selectedCellCollection);
+            Controls.Add(ModifyAbilityUsercontrol);
+            ModifyAbilityUsercontrol.Visible = true;
+            ModifyAbilityUsercontrol.BringToFront();
+
+            ModifyAbilityUsercontrol.Left = (this.Width - ModifyAbilityUsercontrol.Width) / 2;
+            ModifyAbilityUsercontrol.Top = (this.Height - ModifyAbilityUsercontrol.Height) / 2;
+
+        }
+
+        private void dataGridView_AbilityDisplayer_SelectionChanged(object sender, EventArgs e)
+        {
+            selectedCellCollection = dataGridView_AbilityDisplayer.SelectedCells;
         }
     }
 }

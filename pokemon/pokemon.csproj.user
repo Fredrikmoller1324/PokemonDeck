@@ -13,6 +13,9 @@
     <Compile Update="UserControls\DisplayDetailedInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControls\ModifyAbilityUsercontrol.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControls\ModifyPokemon.cs">
       <SubType>UserControl</SubType>
     </Compile>

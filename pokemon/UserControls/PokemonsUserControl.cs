@@ -192,6 +192,5 @@ namespace pokemon.UserControls
             modifyPokemon.Top = (this.Height - modifyPokemon.Height) / 2;
         }
 
-       
     }
 }
