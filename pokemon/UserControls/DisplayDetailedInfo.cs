@@ -25,11 +25,6 @@ namespace pokemon.UserControls
             deckList = decks;
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void DisplayDetailedInfo_Load(object sender, EventArgs e)
         {
             foreach (var trainerInfo in trainers)

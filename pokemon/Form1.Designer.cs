@@ -61,6 +61,7 @@ namespace pokemon
             this.button1_Abilities.TabIndex = 2;
             this.button1_Abilities.Text = "Abilities";
             this.button1_Abilities.UseVisualStyleBackColor = true;
+            this.button1_Abilities.Click += new System.EventHandler(this.button1_Abilities_Click);
             // 
             // Form1
             // 

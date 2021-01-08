@@ -4,6 +4,9 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UserControls\AbilityUsercontrol.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControls\CreateNewPokemon.cs">
       <SubType>UserControl</SubType>
     </Compile>

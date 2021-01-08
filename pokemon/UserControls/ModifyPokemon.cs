@@ -50,7 +50,6 @@ namespace pokemon.UserControls
                         listBox_Decks.Items.Add(allDecks.Name);
                     }
                 }
-
             }
 
             foreach (var trainer in pokemonsUserControl.db.Trainers)
@@ -94,8 +93,6 @@ namespace pokemon.UserControls
                     comboBox_ChangeType.SelectedIndex = pokiname.TypeID - 1;
                 }
             }
-
-
         }
 
         private void button_Save_Click(object sender, EventArgs e)

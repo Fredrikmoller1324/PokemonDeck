@@ -32,5 +32,14 @@ namespace pokemon
             pokemonsUserControl.Dock = DockStyle.Fill;
             pokemonsUserControl.BringToFront();
         }
+
+        private void button1_Abilities_Click(object sender, EventArgs e)
+        {
+            AbilityUsercontrol abilityUsercontrol = new AbilityUsercontrol();
+            Controls.Add(abilityUsercontrol);
+            abilityUsercontrol.Visible = true;
+            abilityUsercontrol.Dock = DockStyle.Fill;
+            abilityUsercontrol.BringToFront();
+        }
     }
 }
