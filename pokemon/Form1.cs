@@ -41,5 +41,14 @@ namespace pokemon
             abilityUsercontrol.Dock = DockStyle.Fill;
             abilityUsercontrol.BringToFront();
         }
+
+        private void button2_Decks_Click(object sender, EventArgs e)
+        {
+            DeckUserControl deckUserControl = new DeckUserControl();
+            Controls.Add(deckUserControl);
+            deckUserControl.Visible = true;
+            deckUserControl.Dock = DockStyle.Fill;
+            deckUserControl.BringToFront();
+        }
     }
 }

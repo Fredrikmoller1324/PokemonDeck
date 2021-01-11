@@ -10,6 +10,9 @@
     <Compile Update="UserControls\CreateNewPokemon.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControls\DeckUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControls\DisplayDetailedInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>

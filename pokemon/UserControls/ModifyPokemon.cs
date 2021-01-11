@@ -45,7 +45,7 @@ namespace pokemon.UserControls
             {
                 foreach (var allDecks in decks)
                 {
-                    if (deck.PokemonID.ToString() == SelectedPokemon[6].Value.ToString())
+                    if (deck.PokemonID.ToString() == SelectedPokemon[6].Value.ToString() && deck.DeckID == allDecks.ID)
                     {
                         listBox_Decks.Items.Add(allDecks.Name);
                     }
@@ -196,9 +196,9 @@ namespace pokemon.UserControls
                 listBox_Decks.Items.Add(comboBox_ChangeDeck.SelectedItem.ToString());
 
                 int deckID = 0;
-                foreach (var deck in pokemonsUserControl.db.Pokemon_Deck_JTs)
+                foreach (var deck in pokemonsUserControl.db.Decks)
                 {
-                    if (comboBox_ChangeDeck.SelectedItem.ToString() == deck.Deck.Name) { deckID = deck.Deck.ID; }
+                    if (comboBox_ChangeDeck.SelectedItem.ToString() == deck.Name) { deckID = deck.ID; }
                 }
                 Pokemon_Deck_JT newJTdeckpoke = new Pokemon_Deck_JT()
                 {
@@ -226,7 +226,7 @@ namespace pokemon.UserControls
                     }
                 }
 
-                foreach (var deckCombo in pokemon_Deck_JTs)
+                foreach (var deckCombo in pokemonsUserControl.db.Pokemon_Deck_JTs)
                 {
                     if (deckCombo.DeckID == deckid && int.Parse(SelectedPokemon[6].Value.ToString()) == deckCombo.PokemonID)
                     {

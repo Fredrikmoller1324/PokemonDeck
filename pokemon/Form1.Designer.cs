@@ -52,6 +52,7 @@ namespace pokemon
             this.button2_Decks.TabIndex = 1;
             this.button2_Decks.Text = "Decks";
             this.button2_Decks.UseVisualStyleBackColor = true;
+            this.button2_Decks.Click += new System.EventHandler(this.button2_Decks_Click);
             // 
             // button1_Abilities
             // 
