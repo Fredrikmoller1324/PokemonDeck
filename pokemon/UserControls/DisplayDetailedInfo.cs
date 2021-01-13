@@ -11,10 +11,11 @@ namespace pokemon.UserControls
         private DataGridViewSelectedCellCollection selectedCells;
         private List<Pokemon_Ability_JT> ability_JTs;
         private List<Ability> abilities;
+        private List<Pokemon_Deck_JT> pokemon_Deck_JTs;
         private List<Deck> deckList;
 
         public DisplayDetailedInfo(DataGridViewSelectedCellCollection cellsfromgrid, List<Trainer> trainerlist, List<Pokemon_Ability_JT> abilityList, List<Ability> abilitiesgo,
-            List<Deck> decks)
+            List<Deck> decks, List<Pokemon_Deck_JT> pokemon_Deck_JTs)
         {
             InitializeComponent();
 
@@ -23,6 +24,7 @@ namespace pokemon.UserControls
             ability_JTs = abilityList;
             abilities = abilitiesgo;
             deckList = decks;
+            this.pokemon_Deck_JTs = pokemon_Deck_JTs;
         }
 
         private void DisplayDetailedInfo_Load(object sender, EventArgs e)
@@ -61,7 +63,17 @@ namespace pokemon.UserControls
 
             foreach (var deck in deckList)
             {
-                listBox_Decks.Items.Add(deck.Name.ToString().ToLower());
+                foreach (var deckcombo in pokemon_Deck_JTs)
+                {
+                    if (deckcombo.PokemonID == int.Parse(selectedCells[6].Value.ToString()))
+                    {
+                        if (!listBox_Decks.Items.Contains(deckcombo.Deck.Name))
+                        {
+                            listBox_Decks.Items.Add(deckcombo.Deck.Name);
+                        }
+                    }
+                }
+                
             }
 
             label_Deckinfos.Text = $"{selectedCells[0].Value.ToString()}\ncan be found \nin these decks";

@@ -60,3 +60,4 @@ C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon
 C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.UserControls.AbilityUsercontrol.resources
 C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.UserControls.ModifyAbilityUsercontrol.resources
 C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.UserControls.DeckUserControl.resources
+C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.Properties.Resources.resources

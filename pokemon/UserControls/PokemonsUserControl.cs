@@ -119,7 +119,7 @@ namespace pokemon.UserControls
 
         private void button1_DetailedStats_Click(object sender, EventArgs e)
         {
-            detailedInfo = new DisplayDetailedInfo(Selectedcellcollection, trainers, ability_JTs, abilities, decks);
+            detailedInfo = new DisplayDetailedInfo(Selectedcellcollection, trainers, ability_JTs, abilities, decks, pokemon_Deck_JTs);
             Controls.Add(detailedInfo);
             detailedInfo.Visible = true;
             detailedInfo.BringToFront();
