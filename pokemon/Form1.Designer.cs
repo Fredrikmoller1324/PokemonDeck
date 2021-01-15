@@ -36,7 +36,10 @@ namespace pokemon
             this.label_AbilityInfo = new System.Windows.Forms.Label();
             this.label_DeckInfo = new System.Windows.Forms.Label();
             this.pictureBox_load = new System.Windows.Forms.PictureBox();
+            this.trackBar_VolumeMixer = new System.Windows.Forms.TrackBar();
+            this.label_volume = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_load)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_VolumeMixer)).BeginInit();
             this.SuspendLayout();
             // 
             // button1_Pokemons
@@ -114,11 +117,32 @@ namespace pokemon
             this.pictureBox_load.TabIndex = 6;
             this.pictureBox_load.TabStop = false;
             // 
+            // trackBar_VolumeMixer
+            // 
+            this.trackBar_VolumeMixer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar_VolumeMixer.Location = new System.Drawing.Point(700, 420);
+            this.trackBar_VolumeMixer.Name = "trackBar_VolumeMixer";
+            this.trackBar_VolumeMixer.Size = new System.Drawing.Size(104, 45);
+            this.trackBar_VolumeMixer.TabIndex = 7;
+            this.trackBar_VolumeMixer.ValueChanged += new System.EventHandler(this.trackBar_VolumeMixer_ValueChanged);
+            // 
+            // label_volume
+            // 
+            this.label_volume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_volume.AutoSize = true;
+            this.label_volume.Location = new System.Drawing.Point(708, 402);
+            this.label_volume.Name = "label_volume";
+            this.label_volume.Size = new System.Drawing.Size(80, 15);
+            this.label_volume.TabIndex = 8;
+            this.label_volume.Text = "Volume Mixer";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label_volume);
+            this.Controls.Add(this.trackBar_VolumeMixer);
             this.Controls.Add(this.pictureBox_load);
             this.Controls.Add(this.label_DeckInfo);
             this.Controls.Add(this.label_AbilityInfo);
@@ -133,6 +157,7 @@ namespace pokemon
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_load)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_VolumeMixer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,6 +172,8 @@ namespace pokemon
         private System.Windows.Forms.Label label_AbilityInfo;
         private System.Windows.Forms.Label label_DeckInfo;
         private System.Windows.Forms.PictureBox pictureBox_load;
+        private System.Windows.Forms.TrackBar trackBar_VolumeMixer;
+        private System.Windows.Forms.Label label_volume;
     }
 }
 

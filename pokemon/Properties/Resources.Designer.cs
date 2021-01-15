@@ -69,5 +69,15 @@ namespace pokemon.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Pokemon_Go__Goblins_from_Mars_Trap_Remix_ {
+            get {
+                object obj = ResourceManager.GetObject("Pokemon_Go__Goblins_from_Mars_Trap_Remix_", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

@@ -5,15 +5,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace pokemon
 {
     public partial class Form1 : Form
     {
+        WindowsMediaPlayer wPlayer = new WindowsMediaPlayer();
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +32,17 @@ namespace pokemon
             var picOfChar = Resources._char;
             pictureBox_load.Image = picOfChar;
             pictureBox_load.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            // tar ut pathway till project som behöver kombineras för att få ut resourcesmappen där låten är lagrad
+            string projectpath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            string UrlMusic = Path.Combine(projectpath, "Resources\\Pokemon Go (Goblins from Mars Trap Remix).mp3");
+
+            wPlayer.URL = UrlMusic;
+
+            wPlayer.controls.play();
+            wPlayer.settings.setMode("loop", true);
+            wPlayer.settings.volume = 2;
+
         }
 
         private void button1_Pokemons_Click(object sender, EventArgs e)
@@ -79,6 +94,11 @@ namespace pokemon
 
 
             }
+        }
+
+        private void trackBar_VolumeMixer_ValueChanged(object sender, EventArgs e)
+        {
+            wPlayer.settings.volume = trackBar_VolumeMixer.Value;
         }
     }
 }
