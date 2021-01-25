@@ -39,42 +39,46 @@ namespace pokemon.UserControls
                 }
             }
 
-            string[] singleAbility = selectedCells[2].Value.ToString().Split('\n');
-
-            foreach (var ability in singleAbility)
+            if(selectedCells[2].Value != null)
             {
-                foreach (var abilityInfo in abilities)
-                {
-                    if (ability == abilityInfo.Name)
-                    {
-                        int rowIndex = dataGridView1_AbilityInfo.Rows.Add();
+                string[] singleAbility = selectedCells[2].Value.ToString().Split('\n');
 
-                        dataGridView1_AbilityInfo.Rows[rowIndex].Cells["Abilitys"].Value = abilityInfo.Name;
-                        dataGridView1_AbilityInfo.Rows[rowIndex].Cells["MaximumDamage"].Value = abilityInfo.MaxDmg;
-                        dataGridView1_AbilityInfo.Rows[rowIndex].Cells["MinimumDamage"].Value = abilityInfo.MinDmg;
+                foreach (var ability in singleAbility)
+                {
+                    foreach (var abilityInfo in abilities)
+                    {
+                        if (ability == abilityInfo.Name)
+                        {
+                            int rowIndex = dataGridView1_AbilityInfo.Rows.Add();
+
+                            dataGridView1_AbilityInfo.Rows[rowIndex].Cells["Abilitys"].Value = abilityInfo.Name;
+                            dataGridView1_AbilityInfo.Rows[rowIndex].Cells["MaximumDamage"].Value = abilityInfo.MaxDmg;
+                            dataGridView1_AbilityInfo.Rows[rowIndex].Cells["MinimumDamage"].Value = abilityInfo.MinDmg;
+                        }
                     }
                 }
             }
+            
 
             label_DisplayPokemonName.Text = selectedCells[0].Value.ToString();
             label_DisplayPokemonType.Text = selectedCells[1].Value.ToString();
             label_DisplayPokemonHp.Text = selectedCells[3].Value.ToString();
             label_DisplayPokemonLevel.Text = selectedCells[4].Value.ToString();
 
-            foreach (var deck in deckList)
+
+            if(selectedCells[7].Value != null)
             {
-                foreach (var deckcombo in pokemon_Deck_JTs)
+                string[] singleDeck = selectedCells[7].Value.ToString().Split('\n');
+
+                foreach (var deck in singleDeck)
                 {
-                    if (deckcombo.PokemonID == int.Parse(selectedCells[6].Value.ToString()))
-                    {
-                        if (!listBox_Decks.Items.Contains(deckcombo.Deck.Name))
-                        {
-                            listBox_Decks.Items.Add(deckcombo.Deck.Name);
-                        }
-                    }
+                    listBox_Decks.Items.Add(deck);
                 }
-                
             }
+            
+
+
+
 
             label_Deckinfos.Text = $"{selectedCells[0].Value.ToString()}\ncan be found \nin these decks";
         }

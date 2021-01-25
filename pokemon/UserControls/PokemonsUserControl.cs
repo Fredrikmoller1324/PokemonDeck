@@ -108,6 +108,24 @@ namespace pokemon.UserControls
 
                     dataGridView1_PokemonsDisplay.Rows[rowIndex].Cells["Abilities"].Value = abilityString;
                 }
+
+                string Decknames = "";
+                foreach (var deck in pokemon_Deck_JTs)
+                {
+                    if(pokemon.ID == deck.PokemonID)
+                    {
+                        if(Decknames.Length == 0)
+                        {
+                            Decknames += deck.Deck.Name;
+                        }
+                        else
+                        {
+                            Decknames += "\n" + deck.Deck.Name;
+                        }
+                    }
+
+                    dataGridView1_PokemonsDisplay.Rows[rowIndex].Cells["Deck"].Value = Decknames;
+                }
             }
             dataGridView1_PokemonsDisplay.BorderStyle = BorderStyle.None;
         }
@@ -172,24 +190,39 @@ namespace pokemon.UserControls
 
         private void button1_Addpokemon_Click(object sender, EventArgs e)
         {
-            newPokemon = new CreateNewPokemon(dataGridView1_PokemonsDisplay, trainers, types, decks, abilities);
-            Controls.Add(newPokemon);
-            newPokemon.Visible = true;
-            newPokemon.BringToFront();
+            if(abilities.Count > 0)
+            {
+                newPokemon = new CreateNewPokemon(dataGridView1_PokemonsDisplay, trainers, types, decks, abilities);
+                Controls.Add(newPokemon);
+                newPokemon.Visible = true;
+                newPokemon.BringToFront();
 
-            newPokemon.Left = (this.Width - newPokemon.Width) / 2;
-            newPokemon.Top = (this.Height - newPokemon.Height) / 2;
+                newPokemon.Left = (this.Width - newPokemon.Width) / 2;
+                newPokemon.Top = (this.Height - newPokemon.Height) / 2;
+            }
+            else
+            {
+                MessageBox.Show("You need to create an ability before you can create a new pokemon","No ability created");
+            }
+          
         }
 
         private void button1_ModifyPokemon_Click(object sender, EventArgs e)
         {
-            modifyPokemon = new ModifyPokemon(Selectedcellcollection, decks, abilities, ability_JTs, pokemon_Deck_JTs);
-            Controls.Add(modifyPokemon);
-            modifyPokemon.Visible = true;
-            modifyPokemon.BringToFront();
+            if(abilities.Count > 0)
+            {
+                modifyPokemon = new ModifyPokemon(Selectedcellcollection, decks, abilities, ability_JTs, pokemon_Deck_JTs);
+                Controls.Add(modifyPokemon);
+                modifyPokemon.Visible = true;
+                modifyPokemon.BringToFront();
 
-            modifyPokemon.Left = (this.Width - modifyPokemon.Width) / 2;
-            modifyPokemon.Top = (this.Height - modifyPokemon.Height) / 2;
+                modifyPokemon.Left = (this.Width - modifyPokemon.Width) / 2;
+                modifyPokemon.Top = (this.Height - modifyPokemon.Height) / 2;
+            }
+            else
+            {
+                MessageBox.Show("You need to create an ability before you can create a new pokemon", "No ability created");
+            }
         }
 
     }

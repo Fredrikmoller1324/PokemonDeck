@@ -29,8 +29,8 @@ namespace pokemon.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1_PokemonsDisplay = new System.Windows.Forms.DataGridView();
             this.pokemons = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +39,7 @@ namespace pokemon.UserControls
             this.Level = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Trainer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Deck = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1_Addpokemon = new System.Windows.Forms.Button();
             this.button1_BackToMenue = new System.Windows.Forms.Button();
             this.button1_DetailedStats = new System.Windows.Forms.Button();
@@ -65,8 +66,9 @@ namespace pokemon.UserControls
             this.HP,
             this.Level,
             this.Trainer,
-            this.ID});
-            this.dataGridView1_PokemonsDisplay.Location = new System.Drawing.Point(0, 0);
+            this.ID,
+            this.Deck});
+            this.dataGridView1_PokemonsDisplay.Location = new System.Drawing.Point(0, 1);
             this.dataGridView1_PokemonsDisplay.MultiSelect = false;
             this.dataGridView1_PokemonsDisplay.Name = "dataGridView1_PokemonsDisplay";
             this.dataGridView1_PokemonsDisplay.RowHeadersVisible = false;
@@ -79,8 +81,8 @@ namespace pokemon.UserControls
             // 
             // pokemons
             // 
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.pokemons.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.pokemons.DefaultCellStyle = dataGridViewCellStyle1;
             this.pokemons.HeaderText = "Pokemon";
             this.pokemons.Name = "pokemons";
             // 
@@ -92,8 +94,8 @@ namespace pokemon.UserControls
             // Abilities
             // 
             this.Abilities.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Abilities.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Abilities.DefaultCellStyle = dataGridViewCellStyle2;
             this.Abilities.HeaderText = "Abilities";
             this.Abilities.Name = "Abilities";
             this.Abilities.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -118,6 +120,12 @@ namespace pokemon.UserControls
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
+            // 
+            // Deck
+            // 
+            this.Deck.HeaderText = "Deck";
+            this.Deck.Name = "Deck";
+            this.Deck.Visible = false;
             // 
             // button1_Addpokemon
             // 
@@ -209,5 +217,6 @@ namespace pokemon.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn Level;
         private System.Windows.Forms.DataGridViewTextBoxColumn Trainer;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Deck;
     }
 }

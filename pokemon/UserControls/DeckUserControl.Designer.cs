@@ -35,6 +35,7 @@ namespace pokemon.UserControls
             this.textBox_NewDeckName = new System.Windows.Forms.TextBox();
             this.label_EnterDeckName = new System.Windows.Forms.Label();
             this.label_CreateNewDeckInfo = new System.Windows.Forms.Label();
+            this.button_ChangeName = new System.Windows.Forms.Button();
             this.button_DeleteDeck = new System.Windows.Forms.Button();
             this.label_PokesInDeck = new System.Windows.Forms.Label();
             this.listBox_PokemonsInDeck = new System.Windows.Forms.ListBox();
@@ -64,11 +65,13 @@ namespace pokemon.UserControls
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.splitContainer1.Panel2.Controls.Add(this.button_ChangeName);
             this.splitContainer1.Panel2.Controls.Add(this.button_DeleteDeck);
             this.splitContainer1.Panel2.Controls.Add(this.label_PokesInDeck);
             this.splitContainer1.Panel2.Controls.Add(this.listBox_PokemonsInDeck);
             this.splitContainer1.Panel2.Controls.Add(this.listBox_Decks);
             this.splitContainer1.Panel2.Controls.Add(this.label_ExistingDecks);
+            this.splitContainer1.Panel2.SizeChanged += new System.EventHandler(this.splitContainer1_Panel2_SizeChanged);
             this.splitContainer1.Size = new System.Drawing.Size(814, 487);
             this.splitContainer1.SplitterDistance = 271;
             this.splitContainer1.TabIndex = 0;
@@ -76,9 +79,9 @@ namespace pokemon.UserControls
             // button_BackToMain
             // 
             this.button_BackToMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_BackToMain.Location = new System.Drawing.Point(43, 403);
+            this.button_BackToMain.Location = new System.Drawing.Point(32, 388);
             this.button_BackToMain.Name = "button_BackToMain";
-            this.button_BackToMain.Size = new System.Drawing.Size(75, 23);
+            this.button_BackToMain.Size = new System.Drawing.Size(91, 40);
             this.button_BackToMain.TabIndex = 4;
             this.button_BackToMain.Text = "Back";
             this.button_BackToMain.UseVisualStyleBackColor = true;
@@ -87,9 +90,9 @@ namespace pokemon.UserControls
             // button_CreateDeck
             // 
             this.button_CreateDeck.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button_CreateDeck.Location = new System.Drawing.Point(81, 264);
+            this.button_CreateDeck.Location = new System.Drawing.Point(85, 255);
             this.button_CreateDeck.Name = "button_CreateDeck";
-            this.button_CreateDeck.Size = new System.Drawing.Size(91, 34);
+            this.button_CreateDeck.Size = new System.Drawing.Size(91, 40);
             this.button_CreateDeck.TabIndex = 3;
             this.button_CreateDeck.Text = "Create Deck";
             this.button_CreateDeck.UseVisualStyleBackColor = true;
@@ -126,12 +129,23 @@ namespace pokemon.UserControls
             this.label_CreateNewDeckInfo.TabIndex = 0;
             this.label_CreateNewDeckInfo.Text = "Create a new Deck";
             // 
+            // button_ChangeName
+            // 
+            this.button_ChangeName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_ChangeName.Location = new System.Drawing.Point(64, 342);
+            this.button_ChangeName.Name = "button_ChangeName";
+            this.button_ChangeName.Size = new System.Drawing.Size(93, 40);
+            this.button_ChangeName.TabIndex = 5;
+            this.button_ChangeName.Text = "Change name";
+            this.button_ChangeName.UseVisualStyleBackColor = true;
+            this.button_ChangeName.Click += new System.EventHandler(this.button_ChangeName_Click);
+            // 
             // button_DeleteDeck
             // 
             this.button_DeleteDeck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_DeleteDeck.Location = new System.Drawing.Point(181, 345);
+            this.button_DeleteDeck.Location = new System.Drawing.Point(163, 342);
             this.button_DeleteDeck.Name = "button_DeleteDeck";
-            this.button_DeleteDeck.Size = new System.Drawing.Size(75, 23);
+            this.button_DeleteDeck.Size = new System.Drawing.Size(93, 40);
             this.button_DeleteDeck.TabIndex = 4;
             this.button_DeleteDeck.Text = "Delete Deck";
             this.button_DeleteDeck.UseVisualStyleBackColor = true;
@@ -216,5 +230,6 @@ namespace pokemon.UserControls
         private System.Windows.Forms.ListBox listBox_Decks;
         private System.Windows.Forms.Label label_ExistingDecks;
         private System.Windows.Forms.Button button_DeleteDeck;
+        private System.Windows.Forms.Button button_ChangeName;
     }
 }

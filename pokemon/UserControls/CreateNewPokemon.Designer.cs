@@ -151,6 +151,7 @@ namespace pokemon.UserControls
             // 
             // comboBox_Trainer
             // 
+            this.comboBox_Trainer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Trainer.FormattingEnabled = true;
             this.comboBox_Trainer.Location = new System.Drawing.Point(134, 401);
             this.comboBox_Trainer.Name = "comboBox_Trainer";
@@ -159,6 +160,7 @@ namespace pokemon.UserControls
             // 
             // comboBox_Abilities
             // 
+            this.comboBox_Abilities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Abilities.FormattingEnabled = true;
             this.comboBox_Abilities.Location = new System.Drawing.Point(445, 55);
             this.comboBox_Abilities.Name = "comboBox_Abilities";
@@ -167,6 +169,7 @@ namespace pokemon.UserControls
             // 
             // comboBox_Deck
             // 
+            this.comboBox_Deck.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Deck.FormattingEnabled = true;
             this.comboBox_Deck.Location = new System.Drawing.Point(445, 235);
             this.comboBox_Deck.Name = "comboBox_Deck";
@@ -233,6 +236,7 @@ namespace pokemon.UserControls
             // 
             // comboBox_type
             // 
+            this.comboBox_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_type.FormattingEnabled = true;
             this.comboBox_type.Location = new System.Drawing.Point(134, 227);
             this.comboBox_type.Name = "comboBox_type";

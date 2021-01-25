@@ -36,19 +36,19 @@ namespace pokemon.UserControls
 
             numericUpDown_ChangeLevel.Value = int.Parse(SelectedPokemon[4].Value.ToString());
 
-            foreach (var ability in SelectedPokemon[2].Value.ToString().Split('\n'))
+            if (SelectedPokemon[2].Value != null)
             {
-                listBox_Abilties.Items.Add(ability);
+                foreach (var ability in SelectedPokemon[2].Value.ToString().Split('\n'))
+                {
+                    listBox_Abilties.Items.Add(ability);
+                }
             }
 
-            foreach (var deck in pokemonsUserControl.db.Pokemon_Deck_JTs)
+            if (SelectedPokemon[7].Value != null)
             {
-                foreach (var allDecks in decks)
+                foreach (var deck in SelectedPokemon[7].Value.ToString().Split('\n'))
                 {
-                    if (deck.PokemonID.ToString() == SelectedPokemon[6].Value.ToString() && deck.DeckID == allDecks.ID)
-                    {
-                        listBox_Decks.Items.Add(allDecks.Name);
-                    }
+                    listBox_Decks.Items.Add(deck);
                 }
             }
 
@@ -67,11 +67,13 @@ namespace pokemon.UserControls
                 comboBox_ChangeDeck.Items.Add(deck.Name);
             }
 
-            foreach (var ability in pokemonsUserControl.db.Abilities)
+            if (pokemonsUserControl.db.Abilities != null)
             {
-                comboBox_ChangeAbilities.Items.Add(ability.Name);
+                foreach (var ability in pokemonsUserControl.db.Abilities)
+                {
+                    comboBox_ChangeAbilities.Items.Add(ability.Name);
+                }
             }
-
 
             int selectedTrainerID = 0;
             foreach (var trainer in pokemonsUserControl.db.Trainers)
@@ -81,10 +83,11 @@ namespace pokemon.UserControls
                     selectedTrainerID = trainer.ID;
                 }
             }
-            comboBox_ChangeTrainer.SelectedIndex = selectedTrainerID - 1;
 
+            comboBox_ChangeTrainer.SelectedIndex = selectedTrainerID - 1;
             comboBox_ChangeDeck.SelectedIndex = 0;
-            comboBox_ChangeAbilities.SelectedIndex = 0;
+
+            if (SelectedPokemon[2].Value != null) { comboBox_ChangeAbilities.SelectedIndex = 0; }
 
             foreach (var pokiname in pokemonsUserControl.db.Pokemons)
             {
@@ -94,10 +97,8 @@ namespace pokemon.UserControls
                 }
             }
         }
-
         private void button_Save_Click(object sender, EventArgs e)
         {
-
             if (textBox_ChangeName.TextLength != 0 && System.Text.RegularExpressions.Regex.IsMatch(textBox_ChangeHp.Text, "^[0-9]*$") &&
                 listBox_Abilties.Items.Count != 0 && listBox_Decks.Items.Count != 0)
             {
@@ -111,7 +112,6 @@ namespace pokemon.UserControls
                 }
 
                 int changedTypeID = comboBox_ChangeType.SelectedIndex;
-
 
                 foreach (var pokemon in pokemonsUserControl.db.Pokemons)
                 {
@@ -130,6 +130,83 @@ namespace pokemon.UserControls
                 SelectedPokemon[4].Value = numericUpDown_ChangeLevel.Value;
                 SelectedPokemon[5].Value = comboBox_ChangeTrainer.SelectedItem;
 
+                foreach (var abilityCombo in pokemonsUserControl.db.Pokemon_Ability_JTs)
+                {
+                    if (int.Parse(SelectedPokemon[6].Value.ToString()) == abilityCombo.PokemonID)
+                    {
+                        pokemonsUserControl.db.Entry(abilityCombo).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        pokemonsUserControl.db.Pokemon_Ability_JTs.Remove(abilityCombo);
+                    }
+                }
+
+                pokemonsUserControl.db.SaveChanges();
+
+                List<int> abilityID = new List<int>();
+
+                foreach (var ability in listBox_Abilties.Items)
+                {
+                    foreach (var dbability in abilities)
+                    {
+                        if (ability.ToString() == dbability.Name)
+                        {
+                            abilityID.Add(dbability.ID);
+                        }
+                    }
+                }
+
+                foreach (var ability in abilityID)
+                {
+                    Pokemon_Ability_JT newJTpokeabi = new Pokemon_Ability_JT()
+                    {
+                        PokemonID = int.Parse(SelectedPokemon[6].Value.ToString()),
+                        AbilityID = ability
+                    };
+                    pokemonsUserControl.db.Entry(newJTpokeabi).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+                    pokemonsUserControl.db.Pokemon_Ability_JTs.Add(newJTpokeabi);
+                }
+
+                pokemonsUserControl.db.SaveChanges();
+
+                abilityID.Clear();
+
+                foreach (var deckCombo in pokemonsUserControl.db.Pokemon_Deck_JTs)
+                {
+                    if (deckCombo.PokemonID == int.Parse(SelectedPokemon[6].Value.ToString()))
+                    {
+                        pokemonsUserControl.db.Entry(deckCombo).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        pokemonsUserControl.db.Pokemon_Deck_JTs.Remove(deckCombo);
+                    }
+                }
+
+                pokemonsUserControl.db.SaveChanges();
+
+                List<int> deckID = new List<int>();
+
+                foreach (var deck in listBox_Decks.Items)
+                {
+                    foreach (var dbDecks in decks)
+                    {
+                        if (deck.ToString() == dbDecks.Name)
+                        {
+                            deckID.Add(dbDecks.ID);
+                        }
+                    }
+                }
+
+                foreach (var deck in deckID)
+                {
+                    Pokemon_Deck_JT newJTpokedeck = new Pokemon_Deck_JT()
+                    {
+                        PokemonID = int.Parse(SelectedPokemon[6].Value.ToString()),
+                        DeckID = deck
+                    };
+                    pokemonsUserControl.db.Entry(newJTpokedeck).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+                    pokemonsUserControl.db.Pokemon_Deck_JTs.Add(newJTpokedeck);
+                    pokemonsUserControl.db.SaveChanges();
+                }
+
+                deckID.Clear();
+
                 string abilityNames = "";
                 foreach (var ability in listBox_Abilties.Items)
                 {
@@ -143,10 +220,24 @@ namespace pokemon.UserControls
                     }
                     SelectedPokemon[2].Value = abilityNames;
                 }
+
+                string modifiedDeckCombinations = "";
+                foreach (var deck in listBox_Decks.Items)
+                {
+                    if (modifiedDeckCombinations.Length == 0)
+                    {
+                        modifiedDeckCombinations += deck;
+                    }
+                    else
+                    {
+                        modifiedDeckCombinations += "\n" + deck;
+                    }
+
+                    SelectedPokemon[7].Value = modifiedDeckCombinations;
+                }
+
                 pokemonsUserControl.db.SaveChanges();
-
                 this.Hide();
-
             }
 
             if (listBox_Abilties.Items.Count == 0 || listBox_Decks.Items.Count == 0)
@@ -158,114 +249,46 @@ namespace pokemon.UserControls
             {
                 MessageBox.Show("The Hp of pokemon can only have a numeric value", "Invalid input");
             }
-
-
         }
-
         private void button_AddAbility_Click(object sender, EventArgs e)
         {
             if (!listBox_Abilties.Items.Contains($"{comboBox_ChangeAbilities.SelectedItem}"))
             {
                 listBox_Abilties.Items.Add(comboBox_ChangeAbilities.SelectedItem.ToString());
-
-                int abilityID = 0;
-                foreach (var ability in abilities)
-                {
-                    if (comboBox_ChangeAbilities.SelectedItem.ToString() == ability.Name)
-                    {
-                        abilityID = ability.ID;
-                    }
-                }
-                Pokemon_Ability_JT newJTpokeabi = new Pokemon_Ability_JT()
-                {
-                    PokemonID = int.Parse(SelectedPokemon[6].Value.ToString()),
-                    AbilityID = abilityID
-
-                };
-
-                pokemonsUserControl.db.Pokemon_Ability_JTs.Add(newJTpokeabi);
-                pokemonsUserControl.db.SaveChanges();
             }
             else { MessageBox.Show("Pokemon already know this ability!", "Add ability failed"); }
         }
-
         private void button_AddToDeck_Click(object sender, EventArgs e)
         {
             if (!listBox_Decks.Items.Contains($"{comboBox_ChangeDeck.SelectedItem}"))
             {
                 listBox_Decks.Items.Add(comboBox_ChangeDeck.SelectedItem.ToString());
 
-                int deckID = 0;
-                foreach (var deck in pokemonsUserControl.db.Decks)
-                {
-                    if (comboBox_ChangeDeck.SelectedItem.ToString() == deck.Name) { deckID = deck.ID; }
-                }
-                Pokemon_Deck_JT newJTdeckpoke = new Pokemon_Deck_JT()
-                {
-                    PokemonID = int.Parse(SelectedPokemon[6].Value.ToString()),
-                    DeckID = deckID
-                };
-                pokemonsUserControl.db.Entry(newJTdeckpoke).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
-                pokemonsUserControl.db.Pokemon_Deck_JTs.Add(newJTdeckpoke);
-                pokemonsUserControl.db.SaveChanges();
+                listBox_Decks.SelectedItem = comboBox_ChangeDeck.SelectedItem.ToString();
             }
             else { MessageBox.Show("This pokemon is already assigned to this deck!", "Add Deck failed"); }
 
         }
-
         private void button1_deleteDeck_Click(object sender, EventArgs e)
         {
             if (listBox_Decks.SelectedItem != null)
             {
-                int deckid = 0;
-                foreach (var deck in pokemon_Deck_JTs)
-                {
-                    if (listBox_Decks.SelectedItem.ToString() == deck.Deck.Name)
-                    {
-                        deckid = deck.DeckID;
-                    }
-                }
-
-                foreach (var deckCombo in pokemonsUserControl.db.Pokemon_Deck_JTs)
-                {
-                    if (deckCombo.DeckID == deckid && int.Parse(SelectedPokemon[6].Value.ToString()) == deckCombo.PokemonID)
-                    {
-                        pokemonsUserControl.db.Entry(deckCombo).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
-
-                        pokemonsUserControl.db.Pokemon_Deck_JTs.Remove(deckCombo);
-                    }
-                }
-
                 listBox_Decks.Items.Remove(listBox_Decks.SelectedItem);
-                pokemonsUserControl.db.SaveChanges();
+                if(listBox_Decks.Items.Count > 0)
+                {
+                    listBox_Decks.SelectedIndex = 0;
+                }
             }
         }
         private void button1_deleteAbility_Click(object sender, EventArgs e)
         {
-            if (listBox_Abilties.SelectedItem != null)
-            {
-                int abilityID = 0;
-                foreach (var ability in abilities)
-                {
-                    if (listBox_Abilties.SelectedItem.ToString() == ability.Name)
-                    {
-                        abilityID = ability.ID;
-                    }
-                }
+            listBox_Abilties.Items.Remove(listBox_Abilties.SelectedItem);
+        }
 
-
-                foreach (var abilityCombo in pokemon_Ability_JTs)
-                {
-                    if (abilityCombo.AbilityID == abilityID && int.Parse(SelectedPokemon[6].Value.ToString()) == abilityCombo.PokemonID)
-                    {
-                        pokemonsUserControl.db.Entry(abilityCombo).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                        pokemonsUserControl.db.Pokemon_Ability_JTs.Remove(abilityCombo);
-                    }
-                }
-
-                listBox_Abilties.Items.Remove(listBox_Abilties.SelectedItem);
-                pokemonsUserControl.db.SaveChanges();
-            }
+        private void button1_CancelModifyPokemon_Click(object sender, EventArgs e)
+        {
+            Hide();
         }
     }
 }
+

@@ -42,6 +42,7 @@ namespace pokemon
             wPlayer.controls.play();
             wPlayer.settings.setMode("loop", true);
             wPlayer.settings.volume = 2;
+            trackBar_VolumeMixer.Value = 1;
 
         }
 
@@ -90,9 +91,6 @@ namespace pokemon
 
                 pictureBox_load.Left = (this.Width - pictureBox_load.Width) / 2 - 245;
                 
-
-
-
             }
         }
 

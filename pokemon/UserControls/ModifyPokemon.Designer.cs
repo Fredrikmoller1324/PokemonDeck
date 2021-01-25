@@ -51,6 +51,7 @@ namespace pokemon.UserControls
             this.label1_NameInfo = new System.Windows.Forms.Label();
             this.button1_deleteAbility = new System.Windows.Forms.Button();
             this.button1_deleteDeck = new System.Windows.Forms.Button();
+            this.button1_CancelModifyPokemon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ChangeLevel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +64,7 @@ namespace pokemon.UserControls
             // 
             // comboBox_ChangeType
             // 
+            this.comboBox_ChangeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_ChangeType.FormattingEnabled = true;
             this.comboBox_ChangeType.Location = new System.Drawing.Point(152, 234);
             this.comboBox_ChangeType.Name = "comboBox_ChangeType";
@@ -129,6 +131,7 @@ namespace pokemon.UserControls
             // 
             // comboBox_ChangeDeck
             // 
+            this.comboBox_ChangeDeck.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_ChangeDeck.FormattingEnabled = true;
             this.comboBox_ChangeDeck.Location = new System.Drawing.Point(448, 252);
             this.comboBox_ChangeDeck.Name = "comboBox_ChangeDeck";
@@ -137,6 +140,7 @@ namespace pokemon.UserControls
             // 
             // comboBox_ChangeAbilities
             // 
+            this.comboBox_ChangeAbilities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_ChangeAbilities.FormattingEnabled = true;
             this.comboBox_ChangeAbilities.Location = new System.Drawing.Point(448, 63);
             this.comboBox_ChangeAbilities.Name = "comboBox_ChangeAbilities";
@@ -145,6 +149,7 @@ namespace pokemon.UserControls
             // 
             // comboBox_ChangeTrainer
             // 
+            this.comboBox_ChangeTrainer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_ChangeTrainer.FormattingEnabled = true;
             this.comboBox_ChangeTrainer.Location = new System.Drawing.Point(152, 408);
             this.comboBox_ChangeTrainer.Name = "comboBox_ChangeTrainer";
@@ -265,11 +270,22 @@ namespace pokemon.UserControls
             this.button1_deleteDeck.UseVisualStyleBackColor = true;
             this.button1_deleteDeck.Click += new System.EventHandler(this.button1_deleteDeck_Click);
             // 
+            // button1_CancelModifyPokemon
+            // 
+            this.button1_CancelModifyPokemon.Location = new System.Drawing.Point(615, 401);
+            this.button1_CancelModifyPokemon.Name = "button1_CancelModifyPokemon";
+            this.button1_CancelModifyPokemon.Size = new System.Drawing.Size(81, 34);
+            this.button1_CancelModifyPokemon.TabIndex = 45;
+            this.button1_CancelModifyPokemon.Text = "Cancel";
+            this.button1_CancelModifyPokemon.UseVisualStyleBackColor = true;
+            this.button1_CancelModifyPokemon.Click += new System.EventHandler(this.button1_CancelModifyPokemon_Click);
+            // 
             // ModifyPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.button1_CancelModifyPokemon);
             this.Controls.Add(this.button1_deleteDeck);
             this.Controls.Add(this.button1_deleteAbility);
             this.Controls.Add(this.textBox_ChangeHp);
@@ -325,5 +341,6 @@ namespace pokemon.UserControls
         private System.Windows.Forms.Label label1_NameInfo;
         private System.Windows.Forms.Button button1_deleteAbility;
         private System.Windows.Forms.Button button1_deleteDeck;
+        private System.Windows.Forms.Button button1_CancelModifyPokemon;
     }
 }

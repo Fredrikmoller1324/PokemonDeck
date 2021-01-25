@@ -64,3 +64,4 @@ C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon
 C:\Users\fredr\source\repos\PokemonDecks\pokemon\bin\Debug\netcoreapp3.1\Interop.WMPLib.dll
 C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\Interop.WMPLib.dll
 C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.csproj.ResolveComReference.cache
+C:\Users\fredr\source\repos\PokemonDecks\pokemon\obj\Debug\netcoreapp3.1\pokemon.UserControls.ChangeDeckName.resources

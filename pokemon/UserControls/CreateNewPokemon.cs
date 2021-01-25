@@ -188,14 +188,20 @@ namespace pokemon.UserControls
                 comboBox_type.Items.Add(type.Name);
             }
 
-            foreach (var deck in decks)
+            if(decks != null)
             {
-                comboBox_Deck.Items.Add(deck.Name);
+                foreach (var deck in decks)
+                {
+                    comboBox_Deck.Items.Add(deck.Name);
+                }
             }
-
-            foreach (var ability in abilities)
+            
+            if(abilities != null)
             {
-                comboBox_Abilities.Items.Add(ability.Name);
+                foreach (var ability in abilities)
+                {
+                    comboBox_Abilities.Items.Add(ability.Name);
+                }
             }
 
             comboBox_Trainer.SelectedIndex = 0;
