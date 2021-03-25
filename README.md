@@ -1,7 +1,7 @@
 # Pokemon Database
 
 This Application was created to learn how to structure a database in SMSS with Entity Framework and how to use CRUD operations do retrieve and display data from the database
-in the winform application.
+in the winform application. The application can be used to create, edit and delete your own decks. You can also create, edit and delete pokemons as well as design your own abilities. Perfect fo a pokemon fanatic.
 
 ## Display of Pokemons info retrieved from DB
 
